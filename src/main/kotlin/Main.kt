@@ -7,16 +7,20 @@ fun main(args: Array<String>) {
 
 fun writeMinutes(times: Int): String {
     val timeMinute = times / 60
-    return if(timeMinute % 10 == 1) "$timeMinute минуту назад"
-    else if(timeMinute % 10 == 2 || timeMinute % 10 == 3 || timeMinute % 10 == 4) "$timeMinute минуты назад"
-    else "$timeMinute минут назад"
+    return when(timeMinute % 10) {
+        1 -> "$timeMinute минуту назад"
+        in 2..4 -> "$timeMinute минуты назад"
+        else -> "$timeMinute минут назад"
+    }
 }
 
 fun writeHours(times: Int): String {
     val timeHours = times / 3_600
-    return if(timeHours % 10 == 1) "$timeHours час назад"
-    else if(timeHours % 10 == 2 || timeHours % 10 == 3 || timeHours % 10 == 4) "$timeHours часа назад"
-    else "$timeHours часов назад"
+    return when(timeHours % 10) {
+        1 -> "$timeHours час назад"
+        in 2..4 -> "$timeHours часа назад"
+        else -> "$timeHours часов назад"
+    }
 }
 
 fun writeTimeAgo(timeSec: Int): String {
